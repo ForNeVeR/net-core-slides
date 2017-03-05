@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-markdown>
+                    <script type="text/template">
+                        ## .NET Core
+                        ---
+                        <footer style="text-align: right;">
+                            by: <img src="images/avatar.png"
+                                     style="width: 1em; height: 1em; margin: 0; border: 0; box-shadow: none;" /><br/>
+                            https://github.com/ForNeVeR<br/>
+                            https://fornever.me/
+                        </footer>
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Архитектура .NET
+
+                        ![Архитектура .NET](images/net-core-architecture.png)
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Поддерживаемые .NET Core операционные системы
+
+                        - **Windows**:  7, 8, 8.1, 10
+                        - **Linux**: RHEL 7+, Ubuntu 14.04+, CentOS 7, Debian 8,
+                          Fedora 23+, OpenSuse 13.2+, Oracle Linux 7+, Mint 17+
+                        - **macOS**: 10.10+
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Схемы разворачивания приложений
+
+                        - Framework-dependent deployment
+                        - Self-contained deployment
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Компоненты .NET Core
+
+                        - dotnet-cli
+                        - MSBuild
+                        - NuGet
+                        - CoreCLR
+                        - ASP.NET Core
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## dotnet-cli
+
+                        ![Пример использования](images/dotnet-cli.png)
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## MSBuild
+
+                        ```xml
+                        <Project Sdk="Microsoft.NET.Sdk">
+
+                            <PropertyGroup>
+                                <OutputType>Exe</OutputType>
+                                <TargetFramework>netcoreapp1.0</TargetFramework>
+                            </PropertyGroup>
+
+                        </Project>
+                        ```
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## ASP.NET Core
+
+                        - OWIN-подобная архитектура
+                        - Kestrel — быстродействующий веб-сервер
+                        - можно запускать и на обычном .NET, и на .NET Core
+                        - стабильная поддержка серверного Linux
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Характеристики
+
+                        ![htop](images/stability.png)
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Это конец
+
+                        <br/><br/><br/>
+                        <small>Слайды доступны в репозитории https://github.com/ForNeVeR/modern-programming</small>
+                    </script>
+                </section>
+            </div>
+        </div>
+        <script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+        <script src="node_modules/reveal.js/js/reveal.js"></script>
+        <script>
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match(/print-pdf/gi)
+                ? 'node_modules/reveal.js/css/print/pdf.css'
+                : 'node_modules/reveal.js/css/print/paper.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        </script>
+        <script>
+            Reveal.initialize({
+                dependencies: [
+                    { src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+                ]
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "modern-programming",
+  "version": "1.0.0",
+  "description": "Slides for the talk about the modern programming",
+  "author": "Friedrich von Never",
+  "license": "MIT",
+  "dependencies": {
+    "reveal.js": "^3.4.1"
+  }
+}
