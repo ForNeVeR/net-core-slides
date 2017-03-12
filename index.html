@@ -17,6 +17,11 @@
                             https://github.com/ForNeVeR<br/>
                             https://fornever.me/
                         </footer>
+
+                        <aside class="notes">
+                            Доклад посвящён новому развивающемуся варианту
+                            фреймворка .NET от Microsoft: .NET Core.
+                        </aside>
                     </script>
                 </section>
                 <section data-markdown>
@@ -27,15 +32,37 @@
                         <small>
                             (https://habrahabr.ru/company/microsoft/blog/323452/)
                         </small>
-                    </script>
-                </section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ## .NET: open-source
 
-                        - Runtime: https://github.com/dotnet/coreclr
-                        - Стандартная библиотека: https://github.com/dotnet/corefx
-                        - ASP.NET: https://github.com/aspnet/Mvc
+                        <aside class="notes">
+                            Поговорим об архитектуре .NET в том виде, в каком
+                            его сегодня видят в Microsoft. Есть три основных
+                            направления развития: основной, старый добрый .NET
+                            под Windows, вариант поновее — Xamarin для мобильных
+                            платформ, и совсем новый, только что появившийся
+                            .NET Core. Все вместе они формируют экосистему,
+                            полноценно поддерживаемую сегодня в Microsoft.
+
+                            Есть инструменты разработки (не только для Windows),
+                            с помощью которых можно компилировать и деплоить
+                            приложения, написанные на .NET, и низлежащая
+                            платформа.
+
+                            Чтобы как-то привести всё это разнообразие к единому
+                            знаменателю, вводятся новые понятия на этой самой
+                            платформе. Одним из важнейших изменений является
+                            введение  .NET Standard Library. В некотором роде
+                            это подмножество знакомой нам BCL, но полностью
+                            расшаренное между тремя верхними платформами. То
+                            есть все классы, входящие в стандартную библиотеку,
+                            будут доступны под любым из вариантов .NET, и к тому
+                            же портабельные библиотеки (или наши собственные
+                            DLL) можно таргетировать на .NET Standard.
+                            Получается эдакий аналог старых PCL.
+
+                            Всё, что изображено на слайде, уже выпущено в релиз,
+                            это уже можно встретить в NuGet и уже можно
+                            пользоваться.
+                        </aside>
                     </script>
                 </section>
                 <section data-markdown>
@@ -43,6 +70,33 @@
                         ## .NET Standard
 
                         ![Версии .NET Standard](images/net-standard-versions.png)
+
+                        <aside class="notes">
+                            Многие уже видели эту табличку с версиями .NET
+                            Standard. Сейчас я поясню, почему эта таблица может
+                            быть нам важна.
+
+                            Итак, у стандартной библиотеки есть версии: 1.0 —
+                            1.6, и отдельно стоящая будущая версия 2.0.
+
+                            Мы видим, что для всех существующих вариантов
+                            использования .NET — для десктопного фреймворка,
+                            .NET Core, Xamarin — указаны совместимые версии
+                            библиотеки. Например, если я пишу на .NET 4.5, это
+                            значит, что я могу использовать пакеты, которые
+                            таргетируют .NET Standard 1.1 и выше.
+
+                            Вся эта таблица просто показывает версии стандарта и
+                            совместимые с ними версии фреймворков.
+
+                            Стоит отметить, что для Xamarin до сих пор значится
+                            "vNext", что значит, что пока что в Xamarin-проектах
+                            нельзя использовать пакеты, таргетирующие .NET
+                            Standard. Впрочем, эта табличка может быть старой
+                            (хотя она и взята из официальной документации), так
+                            что, может, использовать эти пакеты в
+                            Xamarin-приложениях уже разрешили.
+                        </aside>
                     </script>
                 </section>
                 <section data-markdown>
@@ -53,6 +107,19 @@
                         <small>
                             (https://weblog.west-wind.com/posts/2016/Nov/23/NET-Standard-20-Making-Sense-of-NET-Again)
                         </small>
+
+                        <aside class="notes">
+                            Вот список того, что входит в эту стандартную
+                            библиотеку, но каких-то особых откровений тут нет,
+                            в общем-то это и есть современный вариант BCL без
+                            GUI и вещей, завязанных на COM и Remoting.
+
+                            Важно, что привычных GUI-компонентов (Windows Forms
+                            или WPF) для .NET Core не доступно и пока не
+                            планируется. Если очень хочется делать GUI, то есть
+                            сторонние open-source библиотеки (Avalonia,
+                            например).
+                        </aside>
                     </script>
                 </section>
                 <section data-markdown>
@@ -69,28 +136,81 @@
                         <small>
                             (https://github.com/dotnet/core/blob/master/roadmap.md)
                         </small>
+                        <aside class="notes">
+                            А вот даты выпуска следующего стандарта. Во втором
+                            квартале обещают какое-то превью, ну и совсем
+                            по-настоящему выпустят в третьем квартале этого
+                            года.
+
+                            Это относится только ко второму стандарту. Версия
+                            1.6 уже выпущена прямо сейчас, можно ей
+                            пользоваться (и, соответственно, библиотеками,
+                            которые к ней привязаны).
+                        </aside>
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text/template">
-                        ## .NET Standard 2.0: Type Forwarding
+                        ## .NET: open-source
 
-                        ![Перенаправление типов .NET Standard 2.0](images/net-standard-2.0-type-forwarding.png)
-                        <small>
-                            (https://weblog.west-wind.com/posts/2016/Nov/23/NET-Standard-20-Making-Sense-of-NET-Again)
-                        </small>
+                        - Runtime: https://github.com/dotnet/coreclr
+                        - Стандартная библиотека: https://github.com/dotnet/corefx
+                        - ASP.NET: https://github.com/aspnet/Mvc
+
+                        <aside class="notes">
+                            Со стандартом мы закончили, теперь перейдём к,
+                            собственно, .NET Core. Как многие знают, теперь .NET
+                            является опенсорсным и выложен под пермиссивной
+                            лицензией на GitHub. Вот несколько ссылок на
+                            основные компоненты.
+
+                            В open-source выложены ещё не все компоненты,
+                            которые хотелось бы видеть — например, WPF или
+                            Windows Forms так и не опубликовали, и непонятно,
+                            собираются или нет.
+
+                            Основной десктопный фреймворк (тот, который не Core)
+                            шарит некоторые части кода с вот этими исходниками —
+                            в частности, код сборщика мусора, насколько я
+                            понимаю, тот же самый в .NET Core и в обычном .NET,
+                            только собирается с разными флагами.
+                        </aside>
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text/template">
                         ## Поддерживаемые .NET Core платформы
 
-                        - **Windows**:  7, 8, 8.1, 10
+                        - **Windows**: 7, 8, 8.1, 10
                         - **Linux**: RHEL 7+, Ubuntu 14.04+, CentOS 7, Debian 8,
                           Fedora 23+, OpenSuse 13.2+, Oracle Linux 7+, Mint 17+
                         - **macOS**: 10.10+
                         - **Docker**: `microsoft/dotnet:runtime`,
                           `microsoft/dotnet:nanoserver-runtime`
+
+                        <aside class="notes">
+                            Не думаю, что для кого-то будет сюрпризом, что .NET
+                            Core полноценно поддерживает Linux и macOS. Для
+                            Linux пока что выбор дистрибутивов ограничен, и под
+                            какие-то кроме перечисленных собирать очень
+                            проблематично (потому что для начальной компиляции),
+                            потому что для некоторых компонентов нужен уже
+                            собранный C#-компилятор, который сам написан на C#,
+                            и поэтому ему к тому же нужен уже собранный рантайм!
+
+                            Что ещё интересно — это поддержка Docker (а Docker,
+                            напомню, сегодня работает на всех операционных
+                            системах — вплоть до того, что в Windows Server
+                            можно гонять специальные виндовые серверные
+                            контейнеры). И в .NET Core поддерживаются все эти
+                            виды контейнеризации!
+
+                            Преимущества контейнеров заключаются в упрощённом
+                            деплойменте и настройке приложений (которые
+                            деплоятся просто как кучка контейнеров в
+                            соответствии с каким-то конфигом), ну а ещё очень
+                            удобно это дело масштабировать где-нибудь в облаке.
+                        </aside>
                     </script>
                 </section>
                 <section data-markdown>
@@ -99,6 +219,31 @@
 
                         - Framework-dependent deployment
                         - Self-contained deployment
+
+                        <aside class="notes">
+                            Для .NET Core предлагается несколько вариантов
+                            разворачивания: можно деплоиться на машину, где есть
+                            глобально установленный фреймворк (типа того, как у
+                            нас сегодня работают обычные серверные приложения:
+                            сначала ставишь фреймворк, а потом запускаешь
+                            программу).
+
+                            Второй вариант деплоймента — это когда мы тащим
+                            весь фреймворк вместе с собой. К сожалению, у меня
+                            этот режим опробовать не получилось, потому что у
+                            Microsoft там документация немножко устарела, но в
+                            принципе очевидцы утверждают, что этот режим
+                            работает. Можно даже на Windows собрать приложение,
+                            указав, что мы хотим его задеплоить на Linux, и
+                            система сборки подготовит все нужные бинарники со
+                            включенными туда JIT, GC и всеми плюшками. И это
+                            можно будет деплоить в одно из поддерживаемых
+                            окружений.
+
+                            Этот режим сделан для того, чтобы не зависеть от
+                            глобальной инсталляции дотнета, а просто всё нужное
+                            носить с собой.
+                        </aside>
                     </script>
                 </section>
                 <section data-markdown>
@@ -144,7 +289,6 @@
                         - Kestrel — быстродействующий веб-сервер
                         - можно запускать и на обычном .NET (IIS), и на .NET
                           Core
-                        - стабильная поддержка серверного Linux
                         - Microsoft рекомендует к использованию в сценариях, где
                           нужна кроссплатформенность, микросервисы,
                           контейнеризация, масштабирование
@@ -182,7 +326,7 @@
                         ## Это конец
 
                         <br/><br/><br/>
-                        <small>Слайды доступны в репозитории https://github.com/ForNeVeR/modern-programming</small>
+                        <small>Слайды доступны в репозитории https://github.com/ForNeVeR/net-core-slides</small>
                     </script>
                 </section>
             </div>
@@ -190,20 +334,20 @@
         <script src="node_modules/reveal.js/lib/js/head.min.js"></script>
         <script src="node_modules/reveal.js/js/reveal.js"></script>
         <script>
+            var isPrintMode = window.location.search.match(/print-pdf/gi);
             var link = document.createElement('link');
             link.rel = 'stylesheet';
             link.type = 'text/css';
-            link.href = window.location.search.match(/print-pdf/gi)
+            link.href = isPrintMode
                 ? 'node_modules/reveal.js/css/print/pdf.css'
                 : 'node_modules/reveal.js/css/print/paper.css';
             document.getElementsByTagName('head')[0].appendChild(link);
-        </script>
-        <script>
             Reveal.initialize({
                 dependencies: [
                     { src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     { src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
-                ]
+                ],
+                showNotes: isPrintMode
             });
         </script>
     </body>
